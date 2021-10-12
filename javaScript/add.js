@@ -4,15 +4,22 @@ import { render } from './render.js';
 const btn = document.querySelector('.btn');
 
 btn.onclick = () => {
-  const habitList = getLocalStorage();
-  const { value: newHabit } = document.querySelector('#input');
+  const input = document.querySelector('#input');
 
-  const newList = [...habitList, newHabit];
+  const { value: newHabit } = input;
+
+  newHabit && add(newHabit);
+};
+
+function add(newHabit) {
+  const habitList = getLocalStorage();
+  const newList = habitList ? [...habitList, newHabit] : [newHabit];
 
   localStorage.setItem('habits', JSON.stringify(newList));
 
+  input.value = '';
   render();
-};
+}
 
 // RESET LocalStorage
 const h1 = document.querySelector('h1');

@@ -5,6 +5,11 @@ const habitsHTML = document.querySelector('.habits');
 
 export function render() {
   const habitList = getLocalStorage();
+
+  if (!habitList) {
+    return;
+  }
+
   habitsHTML.innerHTML = '';
 
   habitList.forEach((habit) => {
