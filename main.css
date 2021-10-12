@@ -1,0 +1,12 @@
+body {
+  background-color: #2a2c31;
+}
+h1 {
+  color: whitesmoke;
+}
+.border {
+  background-color: whitesmoke !important;
+}
+.border-info {
+  border-color: #41afc5 !important;
+}
