@@ -13,6 +13,13 @@ btn.onclick = () => {
 
 function add(newHabit) {
   const habitList = getLocalStorage();
+
+  if (habitList.includes(newHabit)) {
+    alert('Habit exists');
+    input.value = '';
+    return;
+  }
+
   const newList = habitList ? [...habitList, newHabit] : [newHabit];
 
   localStorage.setItem('habits', JSON.stringify(newList));
