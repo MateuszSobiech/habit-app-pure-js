@@ -1,13 +1,11 @@
 import { habitComponent } from './habitComponent.js';
-import { getLocalStorage } from './getLocalStorage.js';
+import { getHabitList, getCheckList } from './getLocalStorage.js';
 
 const habitsHTML = document.querySelector('.habits');
 
 export function render() {
-  const habitList = getLocalStorage();
-  const checkList = localStorage.getItem('checkList')
-    ? JSON.parse(localStorage.getItem('checkList'))
-    : [];
+  const habitList = getHabitList();
+  const checkList = getCheckList();
 
   if (!habitList) {
     return;

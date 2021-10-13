@@ -1,4 +1,4 @@
-import { getLocalStorage } from './getLocalStorage.js';
+import { getHabitList } from './getLocalStorage.js';
 import { render } from './render.js';
 import { setEventToCheckList } from './setCheckList.js';
 
@@ -13,11 +13,10 @@ btn.onclick = () => {
 };
 
 function add(newHabit) {
-  const habitList = getLocalStorage();
+  const habitList = getHabitList();
 
   if (habitList && habitList.includes(newHabit)) {
     alert('Habit exists');
-    input.value = '';
     return;
   }
 
