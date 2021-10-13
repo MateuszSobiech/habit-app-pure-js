@@ -1,8 +1,17 @@
 body {
   background-color: #2a2c31;
 }
+img {
+  width: 36px;
+  height: 36px;
+  filter: invert(99%) sepia(62%) saturate(2%) hue-rotate(257deg) brightness(122%)
+    contrast(100%);
+}
 h1 {
   color: whitesmoke;
+}
+.reset {
+  cursor: pointer;
 }
 .border {
   background-color: whitesmoke !important;
