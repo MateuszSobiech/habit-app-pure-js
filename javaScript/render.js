@@ -5,6 +5,7 @@ const habitsHTML = document.querySelector('.habits');
 
 export function render() {
   const habitList = getLocalStorage();
+  const checkList = JSON.parse(localStorage.getItem('checkList'));
 
   if (!habitList) {
     return;
@@ -12,8 +13,8 @@ export function render() {
 
   habitsHTML.innerHTML = '';
 
-  habitList.forEach((habit) => {
-    const habitElement = habitComponent(habit);
+  habitList.forEach((habit, index) => {
+    const habitElement = habitComponent(habit, checkList[index]);
 
     habitsHTML.innerHTML += habitElement;
   });

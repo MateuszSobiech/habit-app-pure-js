@@ -1,4 +1,5 @@
 import { getLocalStorage } from './getLocalStorage.js';
+import { saveCheckedToLocalStorage } from './setCheckList.js';
 
 const habitsDiv = document.querySelector('.habits');
 
@@ -14,6 +15,8 @@ habitsDiv.onclick = (e) => {
     const newList = array.filter((v) => v !== habitId);
 
     localStorage.setItem('habits', JSON.stringify(newList));
+
     singleHabit.remove();
+    saveCheckedToLocalStorage();
   }
 };

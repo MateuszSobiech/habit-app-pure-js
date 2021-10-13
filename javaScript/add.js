@@ -1,5 +1,6 @@
 import { getLocalStorage } from './getLocalStorage.js';
 import { render } from './render.js';
+import { setEventToCheckList } from './setCheckList.js';
 
 const btn = document.querySelector('.btn');
 
@@ -14,7 +15,7 @@ btn.onclick = () => {
 function add(newHabit) {
   const habitList = getLocalStorage();
 
-  if (habitList.includes(newHabit)) {
+  if (habitList && habitList.includes(newHabit)) {
     alert('Habit exists');
     input.value = '';
     return;
@@ -26,6 +27,7 @@ function add(newHabit) {
 
   input.value = '';
   render();
+  setEventToCheckList();
 }
 
 // RESET LocalStorage
@@ -34,6 +36,8 @@ h1.onclick = () => {
   const newList = ['One', 'Two', 'Three'];
 
   localStorage.setItem('habits', JSON.stringify(newList));
+  localStorage.setItem('checkList', JSON.stringify(''));
 
   render();
+  setEventToCheckList();
 };
