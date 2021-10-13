@@ -1,5 +1,6 @@
 import { habitComponent } from './habitComponent.js';
 import { getHabitList, getCheckList } from './getLocalStorage.js';
+import { setEventToCheckList } from './setCheckList.js';
 
 const habitsHTML = document.querySelector('.habits');
 
@@ -18,4 +19,6 @@ export function render() {
 
     habitsHTML.innerHTML += habitElement;
   });
+
+  setEventToCheckList();
 }

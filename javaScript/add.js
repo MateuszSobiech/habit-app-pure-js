@@ -1,16 +1,22 @@
 import { getHabitList } from './getLocalStorage.js';
 import { render } from './render.js';
-import { setEventToCheckList } from './setCheckList.js';
 
 const btn = document.querySelector('.btn');
+const input = document.querySelector('#input');
 
-btn.onclick = () => {
-  const input = document.querySelector('#input');
+btn.onclick = () => addNew();
 
+input.addEventListener('keyup', (event) => {
+  if (event.keyCode === 13) {
+    addNew();
+  }
+});
+
+function addNew() {
   const { value: newHabit } = input;
 
   newHabit && add(newHabit);
-};
+}
 
 function add(newHabit) {
   const habitList = getHabitList();
@@ -26,17 +32,15 @@ function add(newHabit) {
 
   input.value = '';
   render();
-  setEventToCheckList();
 }
 
 // RESET LocalStorage
-const h1 = document.querySelector('h1');
-h1.onclick = () => {
+const start = document.querySelector('.start');
+start.onclick = () => {
   const newList = ['One', 'Two', 'Three'];
 
   localStorage.setItem('habits', JSON.stringify(newList));
   localStorage.setItem('checkList', JSON.stringify(''));
 
   render();
-  setEventToCheckList();
 };
