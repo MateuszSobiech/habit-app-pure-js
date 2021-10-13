@@ -5,7 +5,9 @@ const habitsHTML = document.querySelector('.habits');
 
 export function render() {
   const habitList = getLocalStorage();
-  const checkList = JSON.parse(localStorage.getItem('checkList'));
+  const checkList = localStorage.getItem('checkList')
+    ? JSON.parse(localStorage.getItem('checkList'))
+    : [];
 
   if (!habitList) {
     return;
