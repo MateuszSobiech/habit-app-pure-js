@@ -1,4 +1,4 @@
-import { getLocalStorage } from './getStorage.js';
+import { getLocalStorage } from './getLocalStorage.js';
 import { render } from './render.js';
 
 const btn = document.querySelector('.btn');

@@ -1,5 +1,5 @@
 import { habitComponent } from './habitComponent.js';
-import { getLocalStorage } from './getStorage.js';
+import { getLocalStorage } from './getLocalStorage.js';
 
 const habitsHTML = document.querySelector('.habits');
 
