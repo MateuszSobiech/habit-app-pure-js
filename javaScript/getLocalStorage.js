@@ -6,8 +6,15 @@ export function getHabitList() {
 }
 
 export function getCheckList() {
-  const habits = localStorage.getItem('checkList');
-  const array = JSON.parse(habits);
+  const checkList = localStorage.getItem('checkList');
+  const array = JSON.parse(checkList);
 
   return array || [];
+}
+
+export function getLocalDate() {
+  const currentDay = localStorage.getItem('currentDay');
+  const day = JSON.parse(currentDay);
+
+  return day || 0;
 }
