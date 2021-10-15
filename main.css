@@ -34,3 +34,14 @@ p {
   padding-left: 20px;
   padding-right: 20px;
 }
+
+@media (max-width: 768px) {
+  .tier {
+    width: 100%;
+  }
+
+  iframe {
+    width: 100%;
+    height: auto;
+  }
+}
