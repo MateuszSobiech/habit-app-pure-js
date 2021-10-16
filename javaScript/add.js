@@ -35,12 +35,12 @@ function add(newHabit) {
 }
 
 // RESET LocalStorage
-const start = document.querySelector('.start');
-start.onclick = () => {
-  const newList = ['One', 'Two', 'Three'];
+// const start = document.querySelector('.start');
+// start.onclick = () => {
+//   const newList = ['One', 'Two', 'Three'];
 
-  localStorage.setItem('habits', JSON.stringify(newList));
-  localStorage.setItem('checkList', JSON.stringify(''));
+//   localStorage.setItem('habits', JSON.stringify(newList));
+//   localStorage.setItem('checkList', JSON.stringify(''));
 
-  render();
-};
+//   render();
+// };
