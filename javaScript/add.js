@@ -1,46 +1,34 @@
-import { getHabitList } from './getLocalStorage.js';
-import { render } from './render.js';
+import Storage from './Storage.js';
+import { renderTasks } from './render.js';
 
-const btn = document.querySelector('.btn');
-const input = document.querySelector('#input');
+const addNew = () => {
+    const { value: newHabit } = input;
 
-btn.onclick = () => addNew();
+    if (newHabit) add(newHabit);
+};
 
-input.addEventListener('keyup', (event) => {
-  if (event.keyCode === 13) {
-    addNew();
-  }
-});
+const add = (newHabit) => {
+    const habitList = Storage.getHabits();
 
-function addNew() {
-  const { value: newHabit } = input;
+    if (habitList?.includes(newHabit)) {
+        alert('Habit exists');
+        return;
+    }
 
-  newHabit && add(newHabit);
-}
+    const newList = habitList ? [...habitList, newHabit] : [newHabit];
 
-function add(newHabit) {
-  const habitList = getHabitList();
+    Storage.setData('habits', newList);
 
-  if (habitList && habitList.includes(newHabit)) {
-    alert('Habit exists');
-    return;
-  }
+    input.value = '';
+    renderTasks();
+};
 
-  const newList = habitList ? [...habitList, newHabit] : [newHabit];
+export const setAddEvents = () => {
+    const btn = document.querySelector('.btn');
+    const input = document.querySelector('#input');
 
-  localStorage.setItem('habits', JSON.stringify(newList));
-
-  input.value = '';
-  render();
-}
-
-// RESET LocalStorage
-// const start = document.querySelector('.start');
-// start.onclick = () => {
-//   const newList = ['One', 'Two', 'Three'];
-
-//   localStorage.setItem('habits', JSON.stringify(newList));
-//   localStorage.setItem('checkList', JSON.stringify(''));
-
-//   render();
-// };
+    btn.addEventListener('click', addNew);
+    input.addEventListener('keyup', ({ keyCode }) => {
+        if (keyCode === 13) addNew();
+    });
+};

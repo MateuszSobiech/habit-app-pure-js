@@ -1,17 +1,19 @@
-import { render } from './render.js';
+import { renderTasks } from './render.js';
+import Storage from './Storage.js';
 
-const reset = document.querySelector('.reset');
+export const setResetEvent = () => {
+    const reset = document.querySelector('.reset');
+    reset.addEventListener('click', resetAll);
+};
 
-reset.onclick = () => resetAll();
-
-export function resetAll() {
-  const spinner = document.querySelector('.spinner');
-  const habits = document.querySelector('.habits');
-  habits.innerHTML = '';
-  spinner.classList.remove('d-none');
-  setTimeout(() => {
-    spinner.classList.add('d-none');
-    localStorage.setItem('checkList', JSON.stringify([]));
-    render();
-  }, 400);
-}
+export const resetAll = () => {
+    const spinner = document.querySelector('.spinner');
+    const habits = document.querySelector('.habits');
+    habits.innerHTML = '';
+    spinner.classList.remove('d-none');
+    setTimeout(() => {
+        spinner.classList.add('d-none');
+        Storage.setData('checkList', []);
+        renderTasks();
+    }, 200);
+};

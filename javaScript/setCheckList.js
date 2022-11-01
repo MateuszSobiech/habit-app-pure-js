@@ -1,12 +1,14 @@
-export function setEventToCheckList() {
-  const checkDiv = document.querySelectorAll('.is-checked');
-  checkDiv.forEach((el) => el.addEventListener('click', () => saveCheckedToLocalStorage()));
-}
+import Storage from './Storage.js';
 
-export function saveCheckedToLocalStorage() {
-  const checkDiv = document.querySelectorAll('.is-checked');
-  const checkedList = [];
-  checkDiv.forEach((el) => checkedList.push(el.children[0].checked));
+export const setEventToCheckList = () => {
+    const checkDiv = document.querySelectorAll('.is-checked');
+    checkDiv.forEach((element) => element.addEventListener('click', saveCheckedToLocalStorage));
+};
 
-  localStorage.setItem('checkList', JSON.stringify(checkedList));
-}
+export const saveCheckedToLocalStorage = () => {
+    const checkDiv = document.querySelectorAll('.is-checked');
+    const checkedList = [];
+    checkDiv.forEach((el) => checkedList.push(el.children[0].checked));
+
+    Storage.setData('checkList', checkedList);
+};
