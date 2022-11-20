@@ -1,15 +1,20 @@
+import { HabitComponent } from './habit.comp.js';
 import Storage from './Storage.js';
-import { getHabitHTML } from './getHabitHTML.js';
 import { setEventToCheckList } from './setCheckList.js';
 
 export const renderTasks = () => {
     const habitsHTML = document.querySelector('.habits');
-    const habitList = Storage.getHabits();
+    const habitNames = Storage.getHabits();
     const checkList = Storage.getChecked();
 
-    if (!habitList) return;
+    if (!habitNames) return;
 
-    habitsHTML.innerHTML = habitList.map((habit, index) => getHabitHTML(habit, checkList[index])).join('');
+    habitsHTML.innerHTML = '';
+
+    habitNames.forEach((habitName, index) => {
+        const habit = new HabitComponent(habitName, checkList[index]);
+        habitsHTML.append(habit);
+    });
 
     setEventToCheckList();
 };
